@@ -72,3 +72,20 @@ print(f"Total Tags: {total_tags}")
 sorted_authors = sorted(authors_quotes_count.items(), key=lambda x: x[1], reverse=True)[:10]
 author_names = [author[0] for author in sorted_authors]
 quote_count = [author[1] for author in sorted_authors]
+
+fig = {
+    "data": [{"x": author_names, "y": quote_count, "type": "bar", "text": quote_count, "textposition": "auto"}],
+    "layout": {"title": "Number of Quotes by Author", "xaxis": {"title": "Author"}, "yaxis": {"title": "Number of Quotes"}}
+}
+
+sorted_tags = sorted(tag_counts.items(), key=lambda x: x[1], reverse=True)[:10]
+tag_names = [tag[0] for tag in sorted_tags]
+quote_counts = [tag[1] for tag in sorted_tags]
+
+fig2 = {
+    "data": [{"x": tag_names, "y": quote_counts, "type": "bar", "text": quote_counts, "textposition": "auto"}],
+    "layout": {"title": "Number of Quotes with each tag", "xaxis": {"title": "Tag"}, "yaxis": {"title": "Number of Quotes"}}
+}
+
+pio.show(fig)
+pio.show(fig2)
